@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Degree validation</title>
+  <style>
+    .field {
+      width: 300px;
+    }
+  </style>
+  <script>
+    function validateDegree() {
+      const checkboxes = document.querySelectorAll('input[name="degree"]');
+      let isSelected = false;
+      let selectedCount = 0;
+
+      for (const checkbox of checkboxes) {
+        if (checkbox.checked) {
+          isSelected = true;
+          selectedCount++;
+        }
+      }
+
+      if (!isSelected) {
+        alert("Please select at least one degree option.");
+        return false;
+      } else if (selectedCount > 1) {
+        alert("Please select only one degree option.");
+        return false;
+      }
+
+      return true;
+    }
+  </script>
+</head>
+<body>
+  <div class="field">
+    <fieldset>
+      <legend>Degree<br></legend>
+      <input type="checkbox" name="degree" required> SSC
+      <input type="checkbox" name="degree" required> HSC
+      <input type="checkbox" name="degree" required> BSc.
+      <input type="checkbox" name="degree" required> MSc.
+    </fieldset><br>
+  </div>
+  <button type="submit" onclick="return validateDegree()">Submit</button>
+
+</body>
+</html>

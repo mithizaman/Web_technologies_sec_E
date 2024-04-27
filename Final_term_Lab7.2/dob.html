@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Date of birth validation</title>
+  <style>
+    .field {
+      width: 300px;
+    }
+  </style>
+  <script>
+    function validateDateOfBirth() {
+      const day = document.getElementById('dob1').value;
+      const month = document.getElementById('dob2').value;
+      const year = document.getElementById('dob3').value;
+
+      
+      if (day === "" || month === "" || year === "") {
+        alert("Date of Birth cannot be empty!");
+        return false;
+      }
+
+     
+      if (isNaN(day) || day < 1 || day > 31) {
+        alert("Day must be a valid number between 1 and 31.");
+        return false;
+      }
+
+      
+      if (isNaN(month) || month < 1 || month > 12) {
+        alert("Month must be a valid number between 1 and 12.");
+        return false;
+      }
+
+      
+      if (isNaN(year) || year < 1800 || year > 2050) {
+        alert("Year must be a valid number between 1800 and 2050.");
+        return false;
+      }
+
+      
+      const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+      if (day > daysInMonth[month - 1]) {
+        alert("Invalid day for the selected month. Please check!");
+        return false;
+      }
+
+      return true; 
+    }
+  </script>
+</head>
+<body>
+  <div class="field">
+    <fieldset>
+      <legend>Date of Birth</legend>
+      <input type="number" id="dob1" name="dob1" value="" min="1" max="31"> <b> / </b>
+      <input type="number" id="dob2" name="dob2" value="" min="1" max="12"> <b> / </b>
+      <input type="number" id="dob3" name="dob3" value="" min="1800" max="2050"> (dd/mm/yyy)
+    </fieldset><br>
+  </div>
+  <button type="submit" onclick="return validateDateOfBirth()">Submit</button>
+
+</body>
+</html>

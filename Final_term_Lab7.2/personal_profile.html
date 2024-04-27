@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HTML form with JS validation</title>
+</head>
+<body>
+  <fieldset>
+    <h2>PERSON PROFILE</h2>
+
+    <form id="profileForm">
+      <fieldset>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" /><br /><br />
+      </fieldset>
+
+      <fieldset>
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" /><br /><br />
+      </fieldset>
+
+      <fieldset>
+        <label>Gender:</label>
+        <input type="radio" id="male" name="gender" value="male" /> Male
+        <input type="radio" id="female" name="gender" value="female" /> Female
+        <input type="radio" id="other" name="gender" value="other" /> Other<br /><br />
+      </fieldset>
+
+      <fieldset>
+        <label for="dob">Date of Birth:</label>
+        <input type="text" id="dob" name="dob" placeholder="(dd/mm/yyyy)" /><br /><br />
+      </fieldset>
+
+      <fieldset>
+        <label for="blood">Blood Group:</label><br />
+        <select id="blood" name="blood">
+          <option value="">Select</option>
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="O">O</option>
+          <option value="O-">O-</option>
+        </select><br /><br />
+      </fieldset>
+
+      <fieldset>
+        <label>Degree:</label>
+        <input type="radio" id="ssc" name="degree" value="SSC" /> SSC
+        <input type="radio" id="hsc" name="degree" value="HSC" /> HSC
+        <input type="radio" id="bsc" name="degree" value="BSC" /> BSC<br /><br />
+      </fieldset>
+
+      <fieldset>
+        <label for="photo">Photo:</label><br />
+        <input type="file" id="photo" name="photo" /><br /><br />
+      </fieldset>
+
+      <fieldset>
+        <input type="submit" value="Submit" />
+        <input type="reset" value="Reset" />
+      </fieldset>
+    </form>
+  </fieldset>
+
+  <div id="error-container"></div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.getElementById("profileForm");
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        if (validateForm()) {
+          console.log("Form is valid. Submitting...");
+        } else {
+          console.log("Form is not valid. Please correct errors.");
+        }
+      });
+
+      function validateForm() {
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const gender = document.querySelector('input[name="gender"]:checked');
+        const dob = document.getElementById("dob").value;
+        const degree = document.querySelector('input[name="degree"]:checked');
+        const blood = document.getElementById("blood").value;
+        const photo = document.getElementById("photo").value;
+
+        const nameRegex = /^[A-Za-z][A-Za-z. -]+$/;
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const dobRegex = /^(0?[1-9]|[12][0-9]|3[01])\/(0?[1-9]|1[0-2])\/(19|20)\d{2}$/;
+
+        const errors = [];
+
+        if (!name || !name.match(nameRegex)) {
+          errors.push("Name is required and must start with a letter.");
+        }
+
+        if (!email || !email.match(emailRegex)) {
+          errors.push("Email is required and must be a valid email address.");
+        }
+
+        if (!gender) {
+          errors.push("Gender is required.");
+        }
+
+        if (!dob || !dob.match(dobRegex)) {
+          errors.push("Date of Birth is required and must be a valid date.");
+        }
+
+        if (!degree) {
+          errors.push("Degree is required.");
+        }
+
+        if (!blood) {
+          errors.push("Blood Group is required.");
+        }
+
+        if (!photo) {
+          errors.push("Profile picture is required.");
+        }
+
+        const errorContainer = document.getElementById("error-container");
+        errorContainer.innerHTML = "";
+        if (errors.length > 0) {
+          errors.forEach(function (error) {
+            const p = document.createElement("p");
+            p.textContent = error;
+            errorContainer.appendChild(p);
+          });
+          return false;
+        }
+
+        return true;
+      }
+    });
+  </script>
+</body>
+</html>
