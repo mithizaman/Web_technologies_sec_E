@@ -1,0 +1,27 @@
+[
+    {
+      "name": "Wellness Checkups",
+      "price": 50
+    },
+    {
+      "name": "Diagnostic Imaging",
+      "price": 75
+    },
+    {
+      "name": "Emergency Care",
+      "price": 100
+    },
+    {
+        "name": "Physical Therapy",
+        "price": 100
+      },
+      {
+        "name": "Surgical Procedures",
+        "price": 100
+      },
+      {
+        "name": "Mental Health Counseling",
+        "price": 100
+      }
+  ]
+  

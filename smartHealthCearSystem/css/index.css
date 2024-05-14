@@ -1,0 +1,110 @@
+/* Reset default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.navbar {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+/* Style the navigation bar */
+nav {
+  background-color: #333;
+}
+
+/* Style the list items */
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Style the links */
+nav ul li {
+  display: inline;
+}
+
+nav ul li a {
+  display: block;
+  padding: 15px 20px;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Change link color on hover */
+nav ul li a:hover {
+  background-color: #555;
+}
+/* Style the banner */
+.banner {
+  position: relative;
+}
+
+.banner img {
+  width: 100%;
+  height: auto;
+}
+
+.banner h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  color: #0e5888;
+  font-size: 46px;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+/* Style the about us section */
+.about-us {
+  padding: 20px;
+}
+
+.about-us h2 {
+  color: #0e72b5;
+  font-weight: bolder;
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.about-us p {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+/* Hide extra content initially */
+.hidden {
+  display: none;
+}
+
+/* Style the "See More" and "See Less" buttons */
+#see-more-btn,
+#see-less-btn {
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+#see-more-btn:hover,
+#see-less-btn:hover {
+  background-color: #555;
+}
+
+/* Style the footer */
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  margin-top: 100px;
+}

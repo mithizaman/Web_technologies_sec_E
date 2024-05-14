@@ -1,0 +1,11 @@
+.about {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.about img {
+  margin-top: 80px;
+  width: 20%;
+  height: auto;
+}
